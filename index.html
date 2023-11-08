@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css"><!-- Custom CSS-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    
+    <div class="d-flex text-center flex-column">
+        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+            <div class="card-header">Hola humano</div>
+            <div class="card-body">
+                <h4 class="card-title">Juega y sufre</h4>
+                <div class="d-grid gap-2">
+                    <button onclick="startGame()" class="btn btn-lg btn-primary" type="button">Block button</button>
+                </div>
+            </div>
+        </div>
+        <div class="card border-info mb-3" style="max-width: 20rem;">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                
+            </div>
+        </div>
+    </div>
 </body>
 </html>
