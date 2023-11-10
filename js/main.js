@@ -1,4 +1,18 @@
 const gameContainer = document.getElementById("gameContainer");
+// elementByID next button
+// elementByID  questionElement
+// elementByID answerButtonsElement
+let currentQuestionIndex;
+
+/* Randomize array in-place using Durstenfeld shuffle algorithm */
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
 
 const startGame = async () => {
   const response = await axios.get(
@@ -22,3 +36,51 @@ const startGame = async () => {
 
 const quizData = JSON.parse(localStorage.getItem("quizData"));
 console.log(quizData);
+
+const launchGame = () => {
+  // next button should be hidden
+  // currentQuestionIndex to 0
+  // container element visible
+  // set next question
+
+  showQuestion();
+};
+
+// start the game with eventlistener
+document.addEventListener("DOMContentLoaded", launchGame);
+
+const showQuestion = (item) => {
+  const allAnswers = shuffleArray([
+    item.correct_answer,
+    ...item.incorrect_answers,
+  ]);
+  questionElement.innerText = item.question;
+  allAnswers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerText = answer;
+
+    if (answer === item.correct_answer) {
+      button.dataset.correct = true;
+    }
+    button.addEventListener("click", selectAnswer);
+    answerButtonsElement.appendChild(button);
+  });
+  gameContainer.innerHTML = `
+ <h2>${quizData[currentQuestionIndex].category}</h2>
+
+  `;
+};
+
+const setNextQuestion = () => {
+  //resetstate
+  //setNext question
+};
+
+const resetState = () => {
+  // hide next button
+  // delete previous buttons
+};
+
+const selectAnswer = () => {
+  // for each button we set the class correct/incorret with a function
+};
