@@ -12,6 +12,7 @@ const launchGame = () => {
   console.log("DOM CARGADO");
   // currentQuestionIndex to 0
   // container element visible
+
   // set next question
     generateButtons(quizData[0]);
 //   showQuestion();
@@ -19,8 +20,9 @@ const launchGame = () => {
 
 const generateButtons = (item) => {
     const numeroRandom = Math.floor(Math.random() * 4);
-    const buttonsArray =[];
-
+    const buttonsArray = [];
+    const question = item.question;
+    answerButtonsElement.innerHTML = `<p>${question}</p>`;
     const allAnswers = [
         item.correct_answer,
         ...item.incorrect_answers,
@@ -39,7 +41,6 @@ const generateButtons = (item) => {
         selectAnswer(valorDataCorrect,e.target);    
     });
         answerButtonsElement.appendChild(answers);
-        
     })
 
 

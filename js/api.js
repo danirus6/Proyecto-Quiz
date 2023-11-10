@@ -1,5 +1,3 @@
-
-
 const API_BASE_URL = 'https://opentdb.com/api.php?';
 
 export async function getData(cantidad = 10, dificultad = 'hard') {
