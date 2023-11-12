@@ -1,11 +1,9 @@
-
 const answerButtonsElement = document.getElementById("answers");
+const questionContainer = document.getElementById("question");
 
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
 console.log(quizData);
-
-
 
 const launchGame = () => {
   // next button should be hidden
@@ -14,68 +12,56 @@ const launchGame = () => {
   // container element visible
 
   // set next question
-    generateButtons(quizData[0]);
-//   showQuestion();
+  generateButtons(quizData[0]);
+  //   showQuestion();
 };
 
 const generateButtons = (item) => {
-    const numeroRandom = Math.floor(Math.random() * 4);
-    const buttonsArray = [];
-    const question = item.question;
-    answerButtonsElement.innerHTML = `<p>${question}</p>`;
-    const allAnswers = [
-        item.correct_answer,
-        ...item.incorrect_answers,
-      ];
+  const numeroRandom = Math.floor(Math.random() * 4);
+  const buttonsArray = [];
+  const question = item.question;
+  questionContainer.innerHTML = `<p>${question}</p>`;
+  const allAnswers = [item.correct_answer, ...item.incorrect_answers];
 
-    allAnswers.forEach(()=> {
-        const answers = document.createElement("button");
-        
-        buttonsArray.push(answers);
-        
-        answers.addEventListener("click", function (e){
-            const valorDataCorrect = e.target.dataset.correct;
-            console.log(valorDataCorrect);
+  allAnswers.forEach(() => {
+    const answers = document.createElement("button");
 
-        // Utilizar el valor como desees
-        selectAnswer(valorDataCorrect,e.target);    
-    });
-        answerButtonsElement.appendChild(answers);
-    })
+    buttonsArray.push(answers);
 
+    answers.addEventListener("click", selectAnswer);
+    answerButtonsElement.appendChild(answers);
+  });
 
-    // Crear un array que incluya la respuesta correcta y las respuestas incorrectas
-    const respuestas = [...item.incorrect_answers];
-    respuestas.splice(numeroRandom, 0, item.correct_answer);
+  // Crear un array que incluya la respuesta correcta y las respuestas incorrectas
+  const respuestas = [...item.incorrect_answers];
+  respuestas.splice(numeroRandom, 0, item.correct_answer);
 
-
-    // Iterar sobre los botones y asignar el texto de las respuestas
-    buttonsArray.forEach((button, i) => {
-        console.log(numeroRandom)
-        if(i === numeroRandom) {
-            button.dataset.correct = true;
-        }else{
-            button.dataset.correct = false;
-        }
-        button.innerText = respuestas[i];
-        console.log(respuestas[i]);
-    });
-
- 
-}
-
-const selectAnswer = (valorDataCorrect, button) => {
-
-    // Convertir el valor del atributo data-correct a un booleano
-    const esCorrecta = valorDataCorrect === "true";
-    if (esCorrecta) {
-        button.classList.add('correct');
+  // Iterar sobre los botones y asignar el texto de las respuestas
+  buttonsArray.forEach((button, i) => {
+    console.log(numeroRandom);
+    if (i === numeroRandom) {
+      button.dataset.correct = true;
     } else {
-        button.classList.add('wrong');
+      button.dataset.correct = false;
     }
-}
-// start the game with eventlistener
+    button.innerText = respuestas[i];
+    console.log(respuestas[i]);
+  });
+};
+const setStatusClass = (element) => {
+  if (element.dataset.correct === "true") {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+};
+
+const selectAnswer = () => {
+  Array.from(answerButtonsElement.children).forEach((button) => {
+    setStatusClass(button);
+  });
+};
+
 document.addEventListener("DOMContentLoaded", launchGame);
 
-
-//TODO: CONSEGUIR EL VALOR DEL RESULTADO AL CLICAR EL PRIMERO PARA SUMARLO A UN CONTADOR.
+// TODO: CONSEGUIR EL VALOR DEL RESULTADO AL CLICAR EL PRIMERO PARA SUMARLO A UN CONTADOR.
