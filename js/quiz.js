@@ -1,5 +1,7 @@
 const answerButtonsElement = document.getElementById("answers");
 const questionContainer = document.getElementById("question");
+let countCurrentQuestion = 0;
+let countCorrectAnswer = 0;
 
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
@@ -54,14 +56,40 @@ const setStatusClass = (element) => {
   } else {
     element.classList.add("wrong");
   }
+ deleteAnswer();
 };
 
-const selectAnswer = () => {
-  Array.from(answerButtonsElement.children).forEach((button) => {
+const selectAnswer = (button) => {
+    if(button.target.dataset.correct !== "false") {
+        countCorrectAnswer++;
+    }
+    Array.from(answerButtonsElement.children).forEach((button) => {
+    button.disabled = true;
     setStatusClass(button);
   });
+console.log(countCorrectAnswer);
 };
+
+const deleteAnswer = () => {
+    //TODO: GENERATE MODAL WITH 3s TIMEOUT AND WITH CORRECT ANSWER IF FAIL. EXAMPLE: CORRECT ANSWER IS ______
+    //DETELE THE ANSWER
+     setTimeout(() => {
+    while (answerButtonsElement.firstChild) {
+      answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+    }
+    while (questionContainer.firstChild) {
+      questionContainer.removeChild(questionContainer.firstChild)
+    }
+   
+  },3000);
+    
+  //TODO ARREGLAR ESTO DE ABAJO (LA CARGA DE LAS PREGUNTAS)
+    // console.log(countCurrentQuestion++)
+    
+    // generateButtons(quizData[countCurrentQuestion]);
+    //GO NEXT QUESTION
+}
 
 document.addEventListener("DOMContentLoaded", launchGame);
 
-// TODO: CONSEGUIR EL VALOR DEL RESULTADO AL CLICAR EL PRIMERO PARA SUMARLO A UN CONTADOR.
+
