@@ -56,7 +56,7 @@ const setStatusClass = (element) => {
   } else {
     element.classList.add("wrong");
   }
- deleteAnswer();
+ 
 };
 
 const selectAnswer = (button) => {
@@ -68,6 +68,7 @@ const selectAnswer = (button) => {
     setStatusClass(button);
   });
 console.log(countCorrectAnswer);
+deleteAnswer();
 };
 
 const deleteAnswer = () => {
@@ -80,13 +81,11 @@ const deleteAnswer = () => {
     while (questionContainer.firstChild) {
       questionContainer.removeChild(questionContainer.firstChild)
     }
-   
+
+    countCurrentQuestion++;
+    console.log(countCurrentQuestion);
+    generateButtons(quizData[countCurrentQuestion]);
   },3000);
-    
-  //TODO ARREGLAR ESTO DE ABAJO (LA CARGA DE LAS PREGUNTAS)
-    // console.log(countCurrentQuestion++)
-    
-    // generateButtons(quizData[countCurrentQuestion]);
     //GO NEXT QUESTION
 }
 
