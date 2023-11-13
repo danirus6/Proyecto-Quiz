@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,10 @@
     <link rel="stylesheet" href="styles/styles.css"><!-- Custom CSS-->
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
     <script type="module" src="js/main.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+
 </head>
+
 <body>
     <div class="d-flex text-center flex-column">
         <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
@@ -20,12 +24,12 @@
                 </div>
             </div>
         </div>
+
+        <!-- GRAFICO AQUI -->
         <div class="card border-info mb-3" style="max-width: 20rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h4 class="card-title"></h4>
-            </div>
+            <canvas id="myChart"></canvas>
         </div>
     </div>
 </body>
+
 </html>
