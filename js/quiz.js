@@ -5,7 +5,7 @@ let countCorrectAnswer = 0;
 
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
-console.log(quizData);
+// console.log(quizData);
 
 const launchGame = () => {
   // next button should be hidden
@@ -40,28 +40,20 @@ const generateButtons = (item) => {
 
   // Iterar sobre los botones y asignar el texto de las respuestas
   buttonsArray.forEach((button, i) => {
-    console.log(numeroRandom);
+    // console.log(numeroRandom);
     if (i === numeroRandom) {
       button.dataset.correct = true;
     } else {
       button.dataset.correct = false;
     }
     button.innerText = respuestas[i];
-    console.log(respuestas[i]);
   });
 };
-const setStatusClass = (element) => {
-  if (element.dataset.correct === "true") {
-    element.classList.add("correct");
-  } else {
-    element.classList.add("wrong");
-  }
- 
-};
-
+//SELECTO FOR THE ANSWER
 const selectAnswer = (button) => {
     if(button.target.dataset.correct !== "false") {
         countCorrectAnswer++;
+        console.log("Correctas: "+countCorrectAnswer)
     }
     Array.from(answerButtonsElement.children).forEach((button) => {
     button.disabled = true;
@@ -71,10 +63,21 @@ console.log(countCorrectAnswer);
 deleteAnswer();
 };
 
+//Set Class To Correct/Incorrect Answers
+const setStatusClass = (element) => {
+  if (element.dataset.correct === "true") {
+    element.classList.add("correct");
+  } else {
+    element.classList.add("wrong");
+  }
+};
+
 const deleteAnswer = () => {
     //TODO: GENERATE MODAL WITH 3s TIMEOUT AND WITH CORRECT ANSWER IF FAIL. EXAMPLE: CORRECT ANSWER IS ______
     //DETELE THE ANSWER
-     setTimeout(() => {
+
+    //TODO: TRY TO OCULT IN INSPECTOR(F12) THE CORRECT/INCORRECT ANSWER
+    setTimeout(() => {
     while (answerButtonsElement.firstChild) {
       answerButtonsElement.removeChild(answerButtonsElement.firstChild)
     }
