@@ -82,7 +82,7 @@ const generateButtons = (item) => {
     } else {
       button.dataset.correct = false;
     }
-    button.innerHTML = `<p>${respuestas[i]}`;
+    button.innerHTML = `${respuestas[i]}`;
   });
 };
 //SELECT FOR THE ANSWER
