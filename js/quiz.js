@@ -122,20 +122,53 @@ const deleteAnswer = () => {
     }
 
     countCurrentQuestion++;
+    console.log(countCurrentQuestion);
 
     if (countCurrentQuestion !== 10)
       generateButtons(quizData[countCurrentQuestion]);
     else
+      finishQuiz();
       //TODO: MANDAR A RESULT
-      document.location.href = "results.html";
+      // ;
 
   }, 3000);
+
   //GO NEXT QUESTION
 }
-const finishQuiz = () => {
-  //TODO: PASAR LOS DATOS NECESARIOS (DATE, NUM_ANSWER CORRECT VIA LOCAL STORAGEz)
+//ASI COGEMOS LA FECHA ACTUAL
 
+function obtenerFechaActual() {
+  const fecha = new Date();
+  // Obtenemos el año, el mes y el día
+  const year = fecha.getFullYear();
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Se suma 1 porque los meses van de 0 a 11
+  const dia = fecha.getDate().toString().padStart(2, '0');
+
+  // Formateamos la fecha
+  const fechaFormateada = `${year}-${mes}-${dia}`;
+
+  return fechaFormateada;
 }
+// Ejemplo de uso
+const fechaActual = obtenerFechaActual();
+
+
+const finishQuiz = () => {
+  //TODO: PASAR LOS DATOS NECESARIOS (DATE, NUM_ANSWER CORRECT VIA LOCAL STORAGE)
+  const gameResults = {
+    date:obtenerFechaActual(),
+    score: countCorrectAnswer
+  }
+  const existingResultsJSON = localStorage.getItem("gameResults");
+  const existingResults = existingResultsJSON ? JSON.parse(existingResultsJSON) : {fechas:[],aciertos:[]};
+  existingResults.fechas.push(gameResults.date)
+  existingResults.aciertos.push(gameResults.score)
+  localStorage.setItem("gameResults", JSON.stringify(existingResults));
+  document.location.href = "results.html"
+}
+
+
+
 
 document.addEventListener("DOMContentLoaded", launchGame);
 

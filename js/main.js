@@ -7,15 +7,20 @@ const buttonLaunch = document.getElementById('start-button');
 
 //TODO: CONSEGUIDOOOO, HE ESTADO LITERALMENTE 2 HORAS CON EL GRAFICO QUE NO ME CARGABA!
 //TODO: FALTA COGER LOS DATOS DESDE EL LOCALSTORAGE KEY: RESULT CON SU RESPECTIVO PARSE (ESTA DEBAJO DEL EVENT LISTENER)
-const datos = {
-  fechas: ["2021-01-01", "2021-01-02", "2021-01-03"],
-  aciertos: [5, 7, 3]
-};
-console.log(datos);
+
+const existingResultsJSON = localStorage.getItem("gameResults");
+const existingResults = existingResultsJSON ? JSON.parse(existingResultsJSON) : {fechas:[],aciertos:[]};
+// const datos = {
+//   fechas: ["2021-01-01", "2021-01-02", "2021-01-03"], //STRING
+//   aciertos: [5, 7, 3] //INT O STRING
+// };
+console.log(existingResults);
 document.addEventListener('DOMContentLoaded', function () {
   // Llamar a la función del gráfico después de que se haya cargado el DOM
-  crearGrafico(datos.fechas, datos.aciertos);
+  crearGrafico(existingResults.fechas, existingResults.aciertos);
 });
+
+
 
 // Obtener los datos del localStorage
 const datosLocalStorage = localStorage.getItem("result");
