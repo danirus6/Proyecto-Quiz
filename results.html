@@ -6,27 +6,42 @@
     <title>Results</title>
     <link rel="stylesheet" href="styles/bootstrap.min.css" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <style></style>
     <!-- Custom CSS-->
     <script src="js/results.js" defer></script>
   </head>
-  <body>
-    <div class="container">
+  <body class="d-flex align-items-center justify-content-center min-vh-100">
+    <div class="container flex-d">
+      <div class="card text-center bg-success">
+        <div class="row">
+          <div
+            class="col-md-6 d-flex align-items-center justify-content-center"
+          >
+            <p class="fw-bolder display-4 mt-3 mt-md-0">
+              <span id="resultContainer" class="fst-italic text-dark"></span
+              ><span class="">/10</span>
+            </p>
+          </div>
 
-      <p class="font-weight-bold display-3"><span id="resultContainer"></span> /10</p>
-      <div class="card text-center text-white bg-success">
-        <div class="card-header">Aquí van tus resultados!</div>
-        <div class="card-body">
-          <p id="resultComment"></p>
-          <div class="d-grid gap-2">
-            <button id="restart-button" class="btn btn-lg btn-primary" type="button">Go to main page</button>
+          <div class="col-md-6">
+            <div>
+              <div class="card-header">Aquí van tus resultados!</div>
+              <div class="card-body">
+                <p id="resultComment"></p>
+                <div class="d-grid gap-2">
+                  <button
+                    id="restart-button"
+                    class="btn btn-lg btn-primary"
+                    type="button"
+                  >
+                    Go to the main page
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-    </div>
-
-    <button>modal
-
-      
-
+      </div>
     </div>
   </body>
 </html>
