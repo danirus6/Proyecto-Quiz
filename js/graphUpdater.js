@@ -23,7 +23,14 @@ const crearGrafico = (fechas, aciertos) => {
             }]
         },
         options: {
-            // Puedes personalizar las opciones del gráfico según tus necesidades
+            scales: {
+                y: {
+                    type: 'linear',
+                    ticks: {
+                        precision: 0 // Set precision to 0 to display only integers
+                    }
+                }
+            }
         }
     });
 };

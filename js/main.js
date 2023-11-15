@@ -1,6 +1,6 @@
 import { getData } from './api.js';
 import { crearGrafico } from './graphUpdater.js';
-
+import { modal, openModal, updateModalText } from './modalGenerator.js';
 
 const buttonLaunch = document.getElementById('start-button');
 
@@ -60,5 +60,16 @@ const iniciarJuego = async (e) => {
     console.error('Error al obtener preguntas:', error);
   }
 }
+
+// Ejemplo de uso: abrir el modal al hacer clic en un botón con el id "open-modal-button" y pasar el texto deseado
+ const openModalButton = document.getElementById('open-modal-button');
+ openModalButton.addEventListener('click', () => {
+   const textoModal = '¡Este es el texto que se mostrará en el modal!';
+   console.log(textoModal);
+   updateModalText(textoModal);
+   openModal();
+ });
+
+
 // Event listener para el botón "Iniciar Juego"
 buttonLaunch.addEventListener('click', iniciarJuego);

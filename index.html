@@ -16,20 +16,27 @@
 <body>
     <div class="d-flex text-center flex-column">
         <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
-            <div class="card-header">Hola humano</div>
+            <div class="card-header">WELCOME TO QUIZGAME</div>
             <div class="card-body">
                 <h4 class="card-title">Juega y sufre</h4>
                 <div class="d-grid gap-2">
-                    <button id="start-button" class="btn btn-lg btn-primary" type="button">Block button</button>
+                    <button id="start-button" class="btn btn-lg btn-primary" type="button">Empezar la partida</button>
                 </div>
             </div>
         </div>
 
-        <!-- GRAFICO AQUI -->
         <div class="card border-info mb-3" style="max-width: 20rem;">
-            <canvas id="myChart"></canvas>
+            <canvas id="myChart" height="200"></canvas>
         </div>
     </div>
+
+    <button id="open-modal-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+        Abrir Modal
+    </button>
+<!-- Agrega el modal al final del body -->
+<div id="myModal"></div>
+
+
 </body>
 
 </html>
