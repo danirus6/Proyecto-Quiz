@@ -1,9 +1,9 @@
 const answerButtonsElement = document.getElementById("answers");
 const questionContainer = document.getElementById("question");
+const questionNumberContainer = document.getElementById("questionNumber");
+const categoryContainer = document.getElementById("category");
 let countCurrentQuestion = 0;
 let countCorrectAnswer = 0;
-
-
 
 //MODAL
 //TODO: GENERAR BIEN EL MODAL (ESTO ES UN EJEMPLO DE GPT, Y MOVERLO A LA FUNCION (CUANDO CLICAMOS EN UNA RESPUESTA Y BLOQUEAMOS EL CLICK))
@@ -37,8 +37,6 @@ let countCorrectAnswer = 0;
 
 /////////////////////////////////
 
-
-
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
 console.log(quizData);
@@ -58,12 +56,17 @@ const generateButtons = (item) => {
   const numeroRandom = Math.floor(Math.random() * 4);
   const buttonsArray = [];
   const question = item.question;
+  const category = item.category;
   questionContainer.innerHTML = `<p>${question}</p>`;
+
+  questionNumberContainer.innerHTML = countCurrentQuestion + 1;
+  categoryContainer.textContent = category;
   const allAnswers = [item.correct_answer, ...item.incorrect_answers];
 
   allAnswers.forEach(() => {
     const answers = document.createElement("button");
-
+    answers.classList.add("btn");
+    answers.classList.add("btn-light");
     buttonsArray.push(answers);
 
     answers.addEventListener("click", selectAnswer);
@@ -89,7 +92,7 @@ const generateButtons = (item) => {
 const selectAnswer = (button) => {
   if (button.target.dataset.correct !== "false") {
     countCorrectAnswer++;
-    console.log("Correctas: " + countCorrectAnswer)
+    console.log("Correctas: " + countCorrectAnswer);
   }
 
   Array.from(answerButtonsElement.children).forEach((button) => {
@@ -102,9 +105,11 @@ const selectAnswer = (button) => {
 //Set Class To Correct/Incorrect Answers
 const setStatusClass = (element) => {
   if (element.dataset.correct === "true") {
-    element.classList.add("correct");
+    element.classList.remove("btn-light");
+    element.classList.add("btn-success");
   } else {
-    element.classList.add("wrong");
+    element.classList.remove("btn-light");
+    element.classList.add("btn-danger");
   }
 };
 
@@ -115,10 +120,10 @@ const deleteAnswer = () => {
   //TODO: TRY TO OCULT IN INSPECTOR(F12) THE CORRECT/INCORRECT ANSWER
   setTimeout(() => {
     while (answerButtonsElement.firstChild) {
-      answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+      answerButtonsElement.removeChild(answerButtonsElement.firstChild);
     }
     while (questionContainer.firstChild) {
-      questionContainer.removeChild(questionContainer.firstChild)
+      questionContainer.removeChild(questionContainer.firstChild);
     }
 
     countCurrentQuestion++;
@@ -126,23 +131,21 @@ const deleteAnswer = () => {
 
     if (countCurrentQuestion !== 10)
       generateButtons(quizData[countCurrentQuestion]);
-    else
-      finishQuiz();
-      //TODO: MANDAR A RESULT
-      // ;
-
+    else finishQuiz();
+    //TODO: MANDAR A RESULT
+    // ;
   }, 3000);
 
   //GO NEXT QUESTION
-}
+};
 //ASI COGEMOS LA FECHA ACTUAL
 
 function obtenerFechaActual() {
   const fecha = new Date();
   // Obtenemos el año, el mes y el día
   const year = fecha.getFullYear();
-  const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Se suma 1 porque los meses van de 0 a 11
-  const dia = fecha.getDate().toString().padStart(2, '0');
+  const mes = (fecha.getMonth() + 1).toString().padStart(2, "0"); // Se suma 1 porque los meses van de 0 a 11
+  const dia = fecha.getDate().toString().padStart(2, "0");
 
   // Formateamos la fecha
   const fechaFormateada = `${year}-${mes}-${dia}`;
@@ -152,24 +155,20 @@ function obtenerFechaActual() {
 // Ejemplo de uso
 const fechaActual = obtenerFechaActual();
 
-
 const finishQuiz = () => {
   //TODO: PASAR LOS DATOS NECESARIOS (DATE, NUM_ANSWER CORRECT VIA LOCAL STORAGE)
   const gameResults = {
-    date:obtenerFechaActual(),
-    score: countCorrectAnswer
-  }
+    date: obtenerFechaActual(),
+    score: countCorrectAnswer,
+  };
   const existingResultsJSON = localStorage.getItem("gameResults");
-  const existingResults = existingResultsJSON ? JSON.parse(existingResultsJSON) : {fechas:[],aciertos:[]};
-  existingResults.fechas.push(gameResults.date)
-  existingResults.aciertos.push(gameResults.score)
+  const existingResults = existingResultsJSON
+    ? JSON.parse(existingResultsJSON)
+    : { fechas: [], aciertos: [] };
+  existingResults.fechas.push(gameResults.date);
+  existingResults.aciertos.push(gameResults.score);
   localStorage.setItem("gameResults", JSON.stringify(existingResults));
-  document.location.href = "results.html"
-}
-
-
-
+  document.location.href = "results.html";
+};
 
 document.addEventListener("DOMContentLoaded", launchGame);
-
-
