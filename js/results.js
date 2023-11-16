@@ -1,7 +1,12 @@
 const resultContainer = document.getElementById("resultContainer");
 const resultComment = document.getElementById("resultComment");
-const existingResults = JSON.parse(localStorage.getItem("gameResults"));
 const restartButton = document.getElementById("restart-button");
+
+const existingResults = JSON.parse(localStorage.getItem("gameResults"));
+
+console.log("existing results", existingResults);
+console.log("fechas", existingResults.fechas);
+console.log("aciertos", existingResults.aciertos);
 
 const scoreReplies = {
   10: "Es perfecto, tío.",
@@ -16,16 +21,16 @@ const scoreReplies = {
   1: "No sé, igual tienes que leer un par de libros y conocer el mundo.",
   0: "Sabemos que has sufrido. Pero literalmente no podrias hacerlo peor.",
 };
-
-document.addEventListener("DOMContentLoaded", showResults);
-
 const showResults = () => {
-  const lastGameScore = existingResults[existingResults.length - 1];
+  const lastGameScore =
+    existingResults.aciertos[existingResults.aciertos.length - 1];
+  console.log("lastGameScore", lastGameScore);
   resultContainer.innerHTML = lastGameScore;
   let reply = scoreReplies[lastGameScore];
   resultComment.innerHTML = reply;
 };
+document.addEventListener("DOMContentLoaded", showResults);
 
-restartButton.addEventListener("click", function() {
+restartButton.addEventListener("click", function () {
   document.location.href = "index.html";
-})
+});
