@@ -5,37 +5,11 @@ const categoryContainer = document.getElementById("category");
 let countCurrentQuestion = 0;
 let countCorrectAnswer = 0;
 
+
 //MODAL
 //TODO: GENERAR BIEN EL MODAL (ESTO ES UN EJEMPLO DE GPT, Y MOVERLO A LA FUNCION (CUANDO CLICAMOS EN UNA RESPUESTA Y BLOQUEAMOS EL CLICK))
 // Importar el modal y la función de actualización del texto desde el archivo "modal.js"
-// import { modal, openModal, updateModalText } from './modalGenerator.js';
-
-// Agregar el modal al documento
-// document.body.appendChild(modal);
-
-// Ejemplo de uso: abrir el modal al hacer clic en un botón con el id "open-modal-button" y pasar el texto deseado
-// const openModalButton = document.getElementById('open-modal-button');
-// openModalButton.addEventListener('click', () => {
-//   const textoModal = '¡Este es el texto que se mostrará en el modal!';
-//   updateModalText(textoModal);
-//   openModal();
-// });
-
-///////////////
-
-// Crear los datos de ejemplo en el localSTORAGE FORMATO
-// const datos = {
-//   fechas: ["2021-01-01", "2021-01-02", "2021-01-03"],
-//   aciertos: [5, 7, 3]
-// };
-
-// Convertir los datos a JSON
-// const datosJSON = JSON.stringify(datos);
-
-// Guardar los datos en el localStorage
-// localStorage.setItem("result", datosJSON);
-
-/////////////////////////////////
+import { modal, openModal, updateModalText,closeModal } from './modalGenerator.js';
 
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
@@ -100,6 +74,8 @@ const selectAnswer = (button) => {
     button.disabled = true;
     setStatusClass(button);
   });
+  
+  openModalNow(quizData[countCurrentQuestion].correct_answer);
   deleteAnswer();
 };
 
@@ -117,7 +93,7 @@ const setStatusClass = (element) => {
 const deleteAnswer = () => {
   //TODO: GENERATE MODAL WITH 3s TIMEOUT AND WITH CORRECT ANSWER IF FAIL. EXAMPLE: CORRECT ANSWER IS ______
   //DETELE THE ANSWER
-
+  
   //TODO: TRY TO OCULT IN INSPECTOR(F12) THE CORRECT/INCORRECT ANSWER
   setTimeout(() => {
     while (answerButtonsElement.firstChild) {
@@ -129,10 +105,14 @@ const deleteAnswer = () => {
 
     countCurrentQuestion++;
     console.log(countCurrentQuestion);
-
-    if (countCurrentQuestion !== 10)
+    
+    if (countCurrentQuestion !== 10){
+      closeModal();
       generateButtons(quizData[countCurrentQuestion]);
-    else finishQuiz();
+    }else{
+      closeModal();
+      finishQuiz();
+    } 
     //TODO: MANDAR A RESULT
     // ;
   }, 3000);
@@ -171,5 +151,13 @@ const finishQuiz = () => {
   localStorage.setItem("gameResults", JSON.stringify(existingResults));
   document.location.href = "results.html";
 };
+ console.log()
+// openModalNow();
+//MODAL
+const openModalNow = (text) =>{
+  const textoModal = `La respusta Correcta es: ${text}`
+  updateModalText(textoModal);
+  openModal();
+}
 
 document.addEventListener("DOMContentLoaded", launchGame);

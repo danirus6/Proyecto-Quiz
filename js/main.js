@@ -61,14 +61,6 @@ const iniciarJuego = async (e) => {
   }
 }
 
-// Ejemplo de uso: abrir el modal al hacer clic en un botón con el id "open-modal-button" y pasar el texto deseado
- const openModalButton = document.getElementById('open-modal-button');
- openModalButton.addEventListener('click', () => {
-   const textoModal = '¡Este es el texto que se mostrará en el modal!';
-   console.log(textoModal);
-   updateModalText(textoModal);
-   openModal();
- });
 
 
 // Event listener para el botón "Iniciar Juego"
