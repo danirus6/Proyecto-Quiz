@@ -57,16 +57,11 @@ const generateButtons = (item) => {
   const buttonsArray = [];
   const question = item.question;
   const category = item.category;
+
   questionContainer.innerHTML = `<p>${question}</p>`;
-
-  function decodeHtmlEntities(text) {
-    let textarea = document.createElement("textarea");
-    textarea.innerHTML = text;
-    return textarea.value;
-  }
-
   questionNumberContainer.innerHTML = countCurrentQuestion + 1;
-  categoryContainer.textContent = decodeHtmlEntities(category);
+
+  categoryContainer.innerHTML = `${category}`;
   const allAnswers = [item.correct_answer, ...item.incorrect_answers];
 
   allAnswers.forEach(() => {
