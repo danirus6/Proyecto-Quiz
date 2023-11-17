@@ -15,7 +15,7 @@ modalContent.classList.add('modal-content',"modal-sm");
 const modalBody = document.createElement('div');
 modalBody.classList.add('modal-body',"modal-sm");
 
-const modalText = document.createElement('p');
+const modalText = document.createElement('h3');
 modalText.textContent = ''; // Dejar el contenido del texto vacío por defecto
 modalText.classList.add('mt-3', 'mx-3','text-center');
 // const modalFooter = document.createElement('div');
