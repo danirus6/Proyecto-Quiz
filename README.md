@@ -11,7 +11,7 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 - Mejorar habilidades en el trabajo con Git y gestión de proyectos colaborativos.
 - Mejorar el trabajo en equipo y prácticas de codificación limpias.
 
-## Requisitos
+## Requisitos Solicitados en el Proyecto
 
 - Manipulación dinámica del DOM.
 - Creación de una SPA para presentar las preguntas.
@@ -25,15 +25,28 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 
 ## Páginas
 
-1. **Home:** Página de bienvenida. Opcional: Gráfica de los últimos resultados.
-2. **Question SPA:** Página para mostrar y renderizar las 10 distintas preguntas obtenidas de la API.
-3. **Results:** Página para mostrar los resultados del Quiz.
+### Página de Inicio
 
-## Entregables
+* Mensaje de bienvenida al usuario.
+* Tarjeta de inicio que, al hacer clic, inicia el juego y realiza una llamada a la API para obtener las preguntas.
+* Gráfica lineal que muestra los resultados anteriores.
 
-- Subir el proyecto a un repositorio en GitHub.
-- Compartir el enlace del repositorio en Classroom.
-- Un README completo y detallado que explique el proyecto.
+### Página del Cuestionario (Quiz)
+
+* Presenta una pregunta a la vez.
+* Cada pregunta tiene 4 opciones.
+* Interacción con el usuario para responder.
+* Modal con la respuesta correcta.
+* Cambio de color de los botones de respuesta (rojo para fallos, verde para aciertos).
+* Breve tiempo de espera (3 segundos) antes de pasar a la siguiente pregunta.
+* Automáticamente pasa a la página de resultados después de responder las 10 preguntas.
+
+### Página de Resultados
+
+* Muestra los resultados finales del cuestionario.
+* Informa al usuario sobre su desempeño con un mensaje personalizado.
+* Guarda la fecha actual y el número de aciertos para su visualización en la grafica de la página de inicio.
+
 
 ## Instalación y Uso
 
