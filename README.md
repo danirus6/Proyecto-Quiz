@@ -62,3 +62,8 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 1. Clonar este repositorio.
 2. Abrir la carpeta del proyecto en la terminal.
 3. Ejecutar `index.html` en un navegador web.
+
+
+## Autores
+
+[danirus6](https://github.com/danirus6) y [Gen639](https://github.com/Gen639)
