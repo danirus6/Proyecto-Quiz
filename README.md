@@ -30,7 +30,8 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Mensaje de bienvenida al usuario.
 * Tarjeta de inicio que, al hacer clic, inicia el juego y realiza una llamada a la API para obtener las preguntas.
 * Gráfica lineal que muestra los resultados anteriores.
-![index](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/ad7c5d6e-2532-42e9-9ceb-6c5a8f52159c)
+![index_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/01713656-1211-462b-9c45-6f412b68035e)
+
 
 ### Página del Cuestionario (Quiz)
 
@@ -41,15 +42,17 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Cambio de color de los botones de respuesta (rojo para fallos, verde para aciertos).
 * Breve tiempo de espera (3 segundos) antes de pasar a la siguiente pregunta.
 * Automáticamente pasa a la página de resultados después de responder las 10 preguntas.
-![preguntas](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/9b81da5b-5c05-4d11-8401-1d6600d50606)
+![preguntas_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/e8ed9b2d-e238-4a74-91a0-b45e9289d9bd)
+![modal con respuesta_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/64b91288-6b3a-4ff0-b282-df4472e2e2da)
+
 
 ### Página de Resultados
 
 * Muestra los resultados finales del cuestionario.
 * Informa al usuario sobre su desempeño con un mensaje personalizado.
 * Guarda la fecha actual y el número de aciertos para su visualización en la grafica de la página de inicio.
-![resultados](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/8d9d9ae5-98f8-434a-ba81-c977728ea0a7)
-![modal con respuesta](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/0d1df7c9-4a5d-4ede-a089-6d64c2b64e61)
+![resultados_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/7c2ce9b6-95f1-46de-941d-48f6d7a44bff)
+
 
 
 ## Instalación y Uso
