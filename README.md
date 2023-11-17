@@ -31,7 +31,8 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Tarjeta de inicio que, al hacer clic, inicia el juego y realiza una llamada a la API para obtener las preguntas.
 * Gráfica lineal que muestra los resultados anteriores.
   
-![index_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/01713656-1211-462b-9c45-6f412b68035e)
+![index_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/e8784a74-ba30-4314-af60-73e5d3f8202b)
+
 
 
 ### Página del Cuestionario (Quiz)
@@ -43,8 +44,9 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Cambio de color de los botones de respuesta (rojo para fallos, verde para aciertos).
 * Breve tiempo de espera (3 segundos) antes de pasar a la siguiente pregunta.
 * Automáticamente pasa a la página de resultados después de responder las 10 preguntas.
-![preguntas_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/e8ed9b2d-e238-4a74-91a0-b45e9289d9bd)
-![modal con respuesta_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/f39f33f4-7312-4d69-a5ca-ec4fff2ee30f)
+![preguntas_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/11186acf-906e-4c00-8aa6-970516312aae)
+![modal con respuesta_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/9cabb4ea-7d76-4ac1-a29e-3123acf34c16)
+
 
 
 
@@ -53,7 +55,8 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Muestra los resultados finales del cuestionario.
 * Informa al usuario sobre su desempeño con un mensaje personalizado.
 * Guarda la fecha actual y el número de aciertos para su visualización en la grafica de la página de inicio.
-![resultados_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/7c2ce9b6-95f1-46de-941d-48f6d7a44bff)
+![resultados_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/14903a93-327b-4e44-8b9d-00df62f99498)
+
 
 
 
