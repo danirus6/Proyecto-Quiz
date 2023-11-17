@@ -1,5 +1,3 @@
-// Importar la librería Chart.js
-
 // Función para crear y actualizar el gráfico
 const crearGrafico = (fechas, aciertos) => {
   // Obtén una referencia al elemento canvas
@@ -10,7 +8,7 @@ const crearGrafico = (fechas, aciertos) => {
   console.log("HOLA");
   // Crea el gráfico utilizando Chart.js
   new Chart(ctx, {
-    type: "line", // Puedes elegir el tipo de gráfico que mejor se adapte a tus necesidades
+    type: "line", //TIPO DE GRAFICO
     data: {
       labels: fechas,
       datasets: [

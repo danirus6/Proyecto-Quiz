@@ -2,7 +2,7 @@
 
 // Crear elementos del modal
 const modal = document.createElement('div');
-modal.classList.add('modal', 'fade'); // 'fade' es una clase de Bootstrap para agregar un efecto de transición
+modal.classList.add('modal', 'fade'); 
 modal.tabIndex = -1; // Permite cerrar el modal al presionar la tecla ESC
 
 const modalDialog = document.createElement('div');
@@ -18,23 +18,12 @@ modalBody.classList.add('modal-body',"modal-sm");
 const modalText = document.createElement('h3');
 modalText.textContent = ''; // Dejar el contenido del texto vacío por defecto
 modalText.classList.add('mt-3', 'mx-3','text-center');
-// const modalFooter = document.createElement('div');
-// modalFooter.classList.add('modal-footer');
-
-// const exitButton = document.createElement('button');
-// exitButton.classList.add('btn', 'btn-secondary');
-// exitButton.textContent = 'Salir';
-
-// const nextButton = document.createElement('button');
-// nextButton.classList.add('btn', 'btn-primary');
-// nextButton.textContent = 'Siguiente Pregunta';
 
 // Agregar elementos al modal
 modalBody.appendChild(modalText);
-// modalFooter.appendChild(exitButton);
-// modalFooter.appendChild(nextButton);
+
 modalContent.appendChild(modalBody);
-// modalContent.appendChild(modalFooter);
+
 modalDialog.appendChild(modalContent);
 modal.appendChild(modalDialog);
 
@@ -56,10 +45,6 @@ const closeModal = () => {
     modalDialog.classList.remove('show');
     document.body.classList.remove('modal-open');
 };
-
-// Agregar eventos a los botones
-// exitButton.addEventListener('click', closeModal);
-// nextButton.addEventListener('click', closeModal);
 
 // Función para actualizar el texto del modal
 const updateModalText = (text) => {

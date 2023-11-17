@@ -4,12 +4,10 @@ const restartButton = document.getElementById("restart-button");
 
 const existingResults = JSON.parse(localStorage.getItem("gameResults"));
 
-console.log("existing results", existingResults);
-console.log("fechas", existingResults.fechas);
-console.log("aciertos", existingResults.aciertos);
+
 
 const scoreReplies = {
-  10: "Es perfecto, tío.",
+  10: "Esta perfecto. ¡Enhorabuena!",
   9: "Lo has hecho bien, te ha faltado un poco para llegar al 10.",
   8: "Lo has hecho bien, te ha faltado un poco para llegar al 10.",
   7: "Lo has hecho bien, te ha faltado un poco para llegar al 10.",
@@ -24,7 +22,6 @@ const scoreReplies = {
 const showResults = () => {
   const lastGameScore =
     existingResults.aciertos[existingResults.aciertos.length - 1];
-  console.log("lastGameScore", lastGameScore);
   resultContainer.innerHTML = lastGameScore;
   let reply = scoreReplies[lastGameScore];
   resultComment.innerHTML = reply;

@@ -10,5 +10,4 @@ export async function getData(cantidad = 10, dificultad = 'hard') {
         throw error;
     }
 }
-
-// Puedes agregar más funciones relacionadas con la API según tus necesidades
+//PARA OTROS PROYECTOS SE PUEDEN AÑADIR EL UPDATE DELETE POST, ETC

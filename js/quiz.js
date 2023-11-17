@@ -6,24 +6,14 @@ let countCurrentQuestion = 0;
 let countCorrectAnswer = 0;
 
 
-//MODAL
-//TODO: GENERAR BIEN EL MODAL (ESTO ES UN EJEMPLO DE GPT, Y MOVERLO A LA FUNCION (CUANDO CLICAMOS EN UNA RESPUESTA Y BLOQUEAMOS EL CLICK))
-// Importar el modal y la función de actualización del texto desde el archivo "modal.js"
 import { modal, openModal, updateModalText,closeModal } from './modalGenerator.js';
 
 //PARSE DATA
 const quizData = JSON.parse(localStorage.getItem("quizData"));
-console.log(quizData);
 
 const launchGame = () => {
-  // next button should be hidden
-  console.log("DOM CARGADO");
-  // currentQuestionIndex to 0
-  // container element visible
 
-  // set next question
   generateButtons(quizData[0]);
-  //   showQuestion();
 };
 
 const generateButtons = (item) => {
@@ -54,7 +44,6 @@ const generateButtons = (item) => {
 
   // Iterar sobre los botones y asignar el texto de las respuestas
   buttonsArray.forEach((button, i) => {
-    // console.log(numeroRandom);
     if (i === numeroRandom) {
       button.dataset.correct = true;
     } else {
@@ -67,7 +56,6 @@ const generateButtons = (item) => {
 const selectAnswer = (button) => {
   if (button.target.dataset.correct !== "false") {
     countCorrectAnswer++;
-    console.log("Correctas: " + countCorrectAnswer);
   }
 
   Array.from(answerButtonsElement.children).forEach((button) => {
@@ -79,7 +67,6 @@ const selectAnswer = (button) => {
   deleteAnswer();
 };
 
-//Set Class To Correct/Incorrect Answers
 const setStatusClass = (element) => {
   if (element.dataset.correct === "true") {
     element.classList.remove("btn-light");
@@ -91,10 +78,6 @@ const setStatusClass = (element) => {
 };
 
 const deleteAnswer = () => {
-  //TODO: GENERATE MODAL WITH 3s TIMEOUT AND WITH CORRECT ANSWER IF FAIL. EXAMPLE: CORRECT ANSWER IS ______
-  //DETELE THE ANSWER
-  
-  //TODO: TRY TO OCULT IN INSPECTOR(F12) THE CORRECT/INCORRECT ANSWER
   setTimeout(() => {
     while (answerButtonsElement.firstChild) {
       answerButtonsElement.removeChild(answerButtonsElement.firstChild);
@@ -104,7 +87,6 @@ const deleteAnswer = () => {
     }
 
     countCurrentQuestion++;
-    console.log(countCurrentQuestion);
     
     if (countCurrentQuestion !== 10){
       closeModal();
@@ -113,13 +95,9 @@ const deleteAnswer = () => {
       closeModal();
       finishQuiz();
     } 
-    //TODO: MANDAR A RESULT
-    // ;
   }, 3000);
 
-  //GO NEXT QUESTION
 };
-//ASI COGEMOS LA FECHA ACTUAL
 
 function obtenerFechaActual() {
   const fecha = new Date();
@@ -137,7 +115,6 @@ function obtenerFechaActual() {
 const fechaActual = obtenerFechaActual();
 
 const finishQuiz = () => {
-  //TODO: PASAR LOS DATOS NECESARIOS (DATE, NUM_ANSWER CORRECT VIA LOCAL STORAGE)
   const gameResults = {
     date: obtenerFechaActual(),
     score: countCorrectAnswer,
@@ -151,9 +128,7 @@ const finishQuiz = () => {
   localStorage.setItem("gameResults", JSON.stringify(existingResults));
   document.location.href = "results.html";
 };
- console.log()
-// openModalNow();
-//MODAL
+
 const openModalNow = (text) =>{
   const textoModal = `La respusta Correcta es: ${text}`
   updateModalText(textoModal);
