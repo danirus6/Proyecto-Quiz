@@ -30,6 +30,7 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Mensaje de bienvenida al usuario.
 * Tarjeta de inicio que, al hacer clic, inicia el juego y realiza una llamada a la API para obtener las preguntas.
 * Gráfica lineal que muestra los resultados anteriores.
+  
 ![index_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/01713656-1211-462b-9c45-6f412b68035e)
 
 
