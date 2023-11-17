@@ -44,7 +44,8 @@ El proyecto consiste en desarrollar una Single Page Application (SPA) para prese
 * Breve tiempo de espera (3 segundos) antes de pasar a la siguiente pregunta.
 * Automáticamente pasa a la página de resultados después de responder las 10 preguntas.
 ![preguntas_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/e8ed9b2d-e238-4a74-91a0-b45e9289d9bd)
-![modal con respuesta_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/64b91288-6b3a-4ff0-b282-df4472e2e2da)
+![modal con respuesta_reduced](https://github.com/danirus6/Proyecto-Quiz/assets/134865137/f39f33f4-7312-4d69-a5ca-ec4fff2ee30f)
+
 
 
 ### Página de Resultados
